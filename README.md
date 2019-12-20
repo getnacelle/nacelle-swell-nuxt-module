@@ -30,34 +30,19 @@ modules: [
 ```
 
 Then add your Swell GUID to your environment variables `.env` file.
-[![N|Solid](./swell_settings_guid.png)](./swell_settings_guid.png)
+[![Swell](swell_settings_guide.png)](./swell_settings_guid.png)
 ```
 SWELL_GUID=xxxxxxxxxxxxx
 ```
 
-### Add the components to your 
+### Add the components to your Nacelle Storefront
 
+To make the Swell widget visible in your store, open up `layouts/default.vue` and paste `<swell-widget />` just before the closing `div` in the template.
 
-```
-{% if customer %}
-    <script>
-      function setCookie(name,value,days) {
-          var expires = "";
-          if (days) {
-              var date = new Date();
-              date.setTime(date.getTime() + (days*24*60*60*1000));
-              expires = "; expires=" + date.toUTCString();
-          }
-          document.cookie = name + "=" + (value || "")  + expires + "; path=/";
-      }
-      if (document.cookie) {
-        var swellUser = {
-          customerId: {{ customer.id }},
-          customerEmail: '{{ customer.email }}',
-          customerTags: {{ customer.tags | json }}
-        };
-		    setCookie('nacelle_swell_user', btoa(JSON.stringify(swellUser)), 30)
-      }
-    </script>
-{% endif %}
-```
+### Shopify Setup
+
+To complete the integration a liquid snippet needs to be added to your Shopify theme.
+
+Open your Shopify theme code editor under "Actions > Edit Code". Under "Snippets" click "Add new snippet". Name the snippet `swell-nacelle-init.liquid`, paste the following code found [here](liquid/swell-nacelle-init.md).
+
+Open `layout/theme.liquid` and and before the closing `body` tag paste `{% include 'swell-nacelle-init' %}`. Your Shopify account pages will now set the correct Swell data to be used in your Nacelle store.
