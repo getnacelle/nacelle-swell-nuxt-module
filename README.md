@@ -29,4 +29,35 @@ modules: [
 ],
 ```
 
+Then add your Swell GUID to your environment variables `.env` file.
+[![N|Solid](./swell_settings_guid.png)](./swell_settings_guid.png)
+```
+SWELL_GUID=xxxxxxxxxxxxx
+```
+
 ### Add the components to your 
+
+
+```
+{% if customer %}
+    <script>
+      function setCookie(name,value,days) {
+          var expires = "";
+          if (days) {
+              var date = new Date();
+              date.setTime(date.getTime() + (days*24*60*60*1000));
+              expires = "; expires=" + date.toUTCString();
+          }
+          document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+      }
+      if (document.cookie) {
+        var swellUser = {
+          customerId: {{ customer.id }},
+          customerEmail: '{{ customer.email }}',
+          customerTags: {{ customer.tags | json }}
+        };
+		    setCookie('nacelle_swell_user', btoa(JSON.stringify(swellUser)), 30)
+      }
+    </script>
+{% endif %}
+```
