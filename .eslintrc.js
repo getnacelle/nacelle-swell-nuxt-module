@@ -1,14 +1,15 @@
 module.exports = {
-  root: true,
-  env: { 'es6': true },
+  env: {
+    browser: true,
+    es2020: true,
+    node: true,
+    jest: true
+  },
+  extends: ['eslint:recommended', 'plugin:vue/essential'],
   parserOptions: {
-    parser: 'babel-eslint',
+    ecmaVersion: 11,
     sourceType: 'module'
   },
-  extends: [
-    '@nuxtjs'
-  ],
-  rules: {
-    'arrow-parens': 0
-  }
+  plugins: ['vue'],
+  rules: {}
 }
