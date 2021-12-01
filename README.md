@@ -1,7 +1,7 @@
-# ⛔️ DEPRECATED ⛔️
-Use [nacelle-yotpo-loyalty](https://github.com/getnacelle/nacelle-yotpo-loyalty) instead.
+# [DEPRECATED]
 
-# nacelle-swell-nuxt-module
+This package is deprecated. To integrate a third party script with your Nuxt project, follow our docs here: https://docs.getnacelle.com/nuxt/external-scripts.html
+# Nacelle Swell Nuxt Module
 
 Adds Vue.js components for integrating [Swell](https://www.swellrewards.com/) loyalty and referrals in your [Nacelle](https://getnacelle.com/) Nuxt project.
 
